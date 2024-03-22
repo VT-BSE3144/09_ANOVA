@@ -1,0 +1,68 @@
+---
+title: "08-2 Problem Set"
+author: 
+format: pdf
+---
+
+Complete the following code chunks and replacing the *answer here* text. Knit this document to a pdf, **double check the pdf document for errors**, and submit this to this week's Problem Set assignment on Canvas. 
+
+## Part 1. 
+
+Use the dataset from the paper: *Statistical tools for water quality assessment and monitoring in river ecosystems – a scoping review and recommendations for data analysis* to assess the whether water_depth and total concentration of vanadium interact to predict the dissolved concentration of vanadium. Note that total vs dissolved concentrations are in the type column.  
+
+```{r}
+library(tidyverse)
+metals <- read_csv("data/S1_data_cleaned.csv")
+unique(metals$type)
+```
+
+Filter out just the vanadium data, and create dissolved and total variables using `pivot_wider`.
+
+```{r}
+
+```
+
+Make an ANOVA model of how the full set of interactions between `water_depth`, `station_id`, and `total` (vanadium) is predictive of `dissolved` (vanadium). 
+
+```{r}
+
+```
+
+What variables and interactions are significant in your model?
+*answer here*
+
+What variables explains the most variation in your model?
+*answer here*
+
+What other variables might be added to improve your model? Why?
+*answer here*
+
+Does adding `yr` to your model improve it?
+```{r}
+
+```
+
+
+## Part 2. 
+
+Use non-linear least squares to model the inhibitor data from last week. Using the following equation: 
+$$C_{bacteria} = \phi_1 e^{\phi_2 t}$$
+
+The concentration of bacteria in a batch reactor liquid culture is monitored after adding an inhibitor, yielding the following data:
+
+time [hours] <- 4 8 12 16 20 24
+c_bacteria [CFU/mL] <- 1600 1320 1000 890 650 560
+
+where "CFU" is  colony forming units, or how many colonies grow on a petri dish when putting a known volume of culture on the solid agar media in the petri dish. Each colony grows from a single viable (alive) cell. 
+
+A) Fit a non-linear model to the data. 
+
+```{r}
+
+```
+
+B) Compare how this non-linear model improves the prediction of the concentration at time = 0 versus a linear model (particularly the confidence interval). 
+ 
+```{r}
+
+```
