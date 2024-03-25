@@ -16,7 +16,7 @@ metals <- read_csv("data/S1_data_cleaned.csv")
 unique(metals$type)
 ```
 
-Filter out just the vanadium data, and create dissolved and total variables using `pivot_wider`.
+Filter out just the vanadium data, and create dissolved and total variables (from the existing `type` variable) using `pivot_wider`.
 
 ```{r}
 
