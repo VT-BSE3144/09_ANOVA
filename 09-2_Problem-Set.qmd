@@ -13,40 +13,54 @@ Use the dataset from the paper: *Statistical tools for water quality assessment 
 ```{r}
 library(tidyverse)
 metals <- read_csv("data/S1_data_cleaned.csv")
-unique(metals$type)
 ```
 
-Filter out just the vanadium data, and create dissolved and total variables (from the existing `type` variable) using `pivot_wider`.
+A) Filter out just the vanadium data, and create dissolved and total concentration variables (from the existing `type` and `concentration` variables) using `pivot_wider`.
 
 ```{r}
 
 ```
 
-Make an ANOVA model of how the full set of interactions between `water_depth`, `station_id`, and `total` (vanadium) is predictive of `dissolved` (vanadium). 
+B) Make an ANOVA model of how the full set of interactions between `water_depth`, `station_id`, and `total` (vanadium) is predictive of `dissolved` (vanadium). 
 
 ```{r}
 
 ```
 
-What variables and interactions are significant in your model?
+
+C) What variables and interactions are significant in your model?
 *answer here*
 
-What variables explains the most variation in your model?
+
+D) What variables explains the most variation in your model?
 *answer here*
 
-What other variables might be added to improve your model? Why?
+
+E) What other variables might be added to improve your model? Why?
 *answer here*
 
-Does adding `yr` to your model improve it?
+
+F) Does adding `yr` to your model improve it (in terms of `Sum Sq` variation explained by variables vs residuals)?
 ```{r}
 
 ```
 
+G) Use `anova` to compare the two models.
+
+```{r}
+
+```
+
+H) Explain the results and which model is a better fit of the data.
 
 ## Part 2. 
 
 Use non-linear least squares to model the inhibitor data from last week. Using the following equation: 
 $$C_{bacteria} = \phi_1 e^{\phi_2 t}$$
+
+We could make this into a linear form by taking the natural log of both sides:
+
+$$\ln C_{bacteria} = \ln(\phi_1) + \phi_2 t$$
 
 The concentration of bacteria in a batch reactor liquid culture is monitored after adding an inhibitor, yielding the following data:
 
@@ -55,14 +69,18 @@ c_bacteria [CFU/mL] <- 1600 1320 1000 890 650 560
 
 where "CFU" is  colony forming units, or how many colonies grow on a petri dish when putting a known volume of culture on the solid agar media in the petri dish. Each colony grows from a single viable (alive) cell. 
 
-A) Fit a non-linear model to the data. 
+A) Fit a linearized model of the above equation to the data (after transformation).
+
+B) Fit a non-linear model to the data. 
 
 ```{r}
 
 ```
 
-B) Compare how this non-linear model improves the prediction of the concentration at time = 0 versus a linear model (particularly the confidence interval). 
+C) Compare how this non-linear model improves the prediction of the concentration at time = 0 versus a linear model (particularly the standard error in the y-intercept for the linearized equation model, vs $\phi_1$ in the non-linear model). Use propagation of uncertainty for the linear model (<https://en.wikipedia.org/wiki/Propagation_of_uncertainty>). In this and most cases the standard error in the parameters is equivalent to a standard deviation in measurements.
  
 ```{r}
 
+
 ```
+

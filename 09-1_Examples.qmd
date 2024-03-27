@@ -100,7 +100,9 @@ nls1 <- nls(formula = v ~ S/(S + Km) * Vm,
 summary(nls1)
 ```
 
-Note that while we don't get an R^2^ with non-linear least squares that our Residual standard error is an order of magnitude lower with non-linear regression!
+Note that we don't get an R^2^ with non-linear least squares. To compare nonlinear vs linear models we must calculate the residuals given the parameters for each model, so plugging back in the `Vm` and `Km` parameters from our `lm` call and `nls` call into the Michaelis-Menten equation and calculating the predictions, then subtract the original `v` values from data from those that our models predict to calculate residuals for each model on the same scale of the original `v` without transformation. 
+
+You can see how this is done in my Bioprocess course packet here: <https://wrightrc.github.io/Bioprocess-Book/05-enzyme-rate-parameters.html#comparing-linearization-vs-nonlinear-methods>.
 
 Another advantage is that our $K_m$ and $k_{cat}$ as well as standard errors do not need any scaling; we get direct estimates of parameters of this enzyme and **uncertainty** in these estimates. While we can calculate these parameters and uncertainties it is cumbersome and inevitably will result in poorer estimates just based on the worse model-fit per the residuals.
 
@@ -108,6 +110,8 @@ Looking back at our linearized model,
 $$\frac{E_0}{\nu} = \frac{K_m}{k_{cat}S} + \frac{1}{k_{cat}}$$
 we can calculate our estimate of $k_{cat}=$ `r 1/summary(LB)$coefficients[1,1]` $\pm$ , and our estimate of $K_m =$ `r summary(LB)$coefficients[2,1]/summary(LB)$coefficients[1,1]`. To calculate the uncertainty in these estimates we must propagate the standard error in our slope and intercept, according to the division formula
 $$Q = \frac{a}{x}, \delta Q = Q \sqrt{(\frac{\delta a}{a})^2 + (\frac{\delta x}{x})^2}$$
+
+There is a nice wikipedia article on Propagation of Uncertainty describing these formulas for standard error/deviation calculation and how they were derived: <https://en.wikipedia.org/wiki/Propagation_of_uncertainty>
 
 ```{r}
 ggplot2::ggplot(data = data, 
@@ -128,9 +132,9 @@ ggplot2::ggplot(data = data,
                 mapping = aes(x = S, y = v)) + 
                   geom_point() + labs(y = "v (g/L-min)", 
                     x = "S (g/L)") + 
-  geom_smooth(method = "nls", se = FALSE,
-              formula = y ~ x/(x + Km) * Vm,
-              method.args = list(start = list(Km=111, Vm=9.5))) + 
+  # geom_smooth(method = "nls", se = FALSE,
+  #             formula = y ~ x/(x + Km) * Vm,
+  #             method.args = list(start = list(Km=111, Vm=9.5))) + 
   geom_ribbon(data = conf.int, mapping = aes(x = x, ymin = ymin, ymax = ymax), inherit.aes = FALSE, alpha = 0.2)
 ```
 
