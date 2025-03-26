@@ -30,7 +30,7 @@ This week our goals are to be able to:
 This lesson in basic analysis of variance focuses and extends upon an example originally published in [Brady et al. 2015](https://www.ncbi.nlm.nih.gov/pubmed/26220933). Read through the introduction of this paper and come back when you're at the "ANOVA PROPERLY TESTS GENETIC INTERACTIONS" section.
 
 
-[ANOVA (Analysis of Variance)](https://en.wikipedia.org/wiki/Analysis_of_variance) facilitates comparisons of quantitative outcome variables between and among different categorical, grouping variables as well as interactions between these variables. It is an extension of linear regression
+[ANOVA (Analysis of Variance)](https://en.wikipedia.org/wiki/Analysis_of_variance) facilitates comparisons of quantitative outcome variables between and among different categorical, grouping variables as well as interactions between these variables. It is an extension of linear regression that allows us to compare group means in a more rigorous way than using pairwise T-tests.
 
 Let's simulate an experiment in which we want to determine if two genes interact to contribute to a particular phenotype. These genes could be redundant or interact in some epistatic (non-linear) manner. To figure this out we will need to measure the phenotype of interest for the two single mutants, the wild type, and the double mutant. For this example, let's use root length as the phenotype. Suppose we have two mutants in two genes that we suspect have an effect on root length, as well as a double mutant containing mutations in both genes. 
 
