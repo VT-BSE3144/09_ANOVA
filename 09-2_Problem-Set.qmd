@@ -1,6 +1,5 @@
 ---
-title: "08-2 Problem Set"
-author: 
+title: "09-2 Problem Set"
 format: pdf
 ---
 
@@ -84,3 +83,13 @@ C) Compare how this non-linear model improves the prediction of the concentratio
 
 ```
 
+For this linear model the value of $\phi_1$ is related to the y-intercept, $y_0$ as $e^{y_0}$. So to calculate the value of $\phi_1$:
+$$\phi_1 = e^{y_0}$$. 
+
+Looking at the table in wikipedia for similar calculations we find:
+$$f = ae^{bA}$$ 
+where here $a$ and $b$ are 1 and therefore $A = y_0$ and $f = \phi_1$. 
+The standard deviation in $f$, $\sigma_f$, from the third column in the table is
+$$\sigma_f = |f| |b\sigma_A|$$ 
+If we translate this to the terminology of our specific problem we get:
+$$\sigma_{\phi_1} = |\phi_1| |\sigma_{y_0}|$$ 
