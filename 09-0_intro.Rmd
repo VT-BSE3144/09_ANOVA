@@ -1,7 +1,7 @@
 ---
 output: html_document
 params:
-  version: 1.0
+  version: 1.1
 ---
 
 # Intro to ANOVA and non-linear least squares regression
