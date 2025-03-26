@@ -1,11 +1,10 @@
 ---
-title: "09-0 Intro to ANOVA and non-linear least squares regression"
-author: "Clay Wright"
-date: "`r Sys.Date()`"
-format: 
-  html:
-    toc: true
+output: html_document
+params:
+  version: 1.0
 ---
+
+# Intro to ANOVA and non-linear least squares regression
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
